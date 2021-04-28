@@ -32,3 +32,9 @@ library(ggplot2)
 install.packages("ggplot2")
 library(ggplot2)
 head(mpg)
+gapminder %>%
+  filter(continent=='Asia') %>%
+  group_by(country) %>%
+  summarise(life_avg=mean(lifeExp)) %>%
+  arrange(desc(life_avg)) %>%
+  head(5)

@@ -1,0 +1,52 @@
+---
+title: "6장 단원문제"
+author: "조현수"
+date: '2021 4 27 '
+output: html_document
+---
+### 1. gapminder 데이터에 기록된 전 세계 인구의 구성 비율은 어떻게 변화하고 있을까?
+## (1) 전체 관측 기간(1952년~2007년) 중 1952년도의 인구 구성을 추출한 후 [그림6-25]와 같이 시각화 하라.
+```{r setup, include=FALSE}
+
+x=gapminder %>% 
+  filter(year==1952) %>% 
+  select(country, pop) %>% 
+  arrange(desc(pop)) %>% 
+  head()
+pie(x$pop, x$country)
+barplot(x$pop, names.arg=x$country)
+```
+
+### 3. ggplot2를 이용하여 Iris 데이터 셋에 대해서 다음 문제를 푸세요.
+
+## (1) 품종별로 Sepal/Petal의 Length, Width 산점도 그리기. (총 6개)
+
+```{r cars}
+ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width, col=Species)) + 
+  geom_point(alpha=0.2)
+
+ggplot(iris, aes(x=Sepal.Length, y=Petal.Length, col=Species)) + 
+  geom_point(alpha=0.2)
+
+ggplot(iris, aes(x=Sepal.Length, y=Petal.Width, col=Species)) + 
+  geom_point(alpha=0.2)
+
+ggplot(iris, aes(x=Sepal.Width, y=Petal.Length, col=Species)) + 
+  geom_point(alpha=0.2)
+
+ggplot(iris, aes(x=Sepal.Width, y=Petal.Width, col=Species)) + 
+  geom_point(alpha=0.2)
+
+ggplot(iris, aes(x=Petal.Length, y=Petal.Width, col=Species)) + 
+  geom_point(alpha=0.2)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

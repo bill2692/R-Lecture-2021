@@ -38,6 +38,22 @@ summarise(group_by(asia_pop, country), life_avg=mean(lifeExp)) %>%
   arrange(desc(life_avg)) %>%
   head(5)
 
+gapminder %>%
+  filter(continent=='Asia') %>%
+  group_by(country) %>%
+  summarise(life_avg=mean(lifeExp)) %>%
+  arrange(desc(life_avg)) %>%
+  head(5)
+
+#
+gapminder %>%
+  filter(year==2007 & pop>=se7) %>%
+  group_by(country) %>%
+  summarise(life_avg=mean(lifeExp)) %>%
+  arrange(desc(life_avg)) %>%
+  head(5)
+
+
 # mpg(mile-per-gallon)
 library(dplyr)
 library(ggplot2)
